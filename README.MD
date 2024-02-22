@@ -1,8 +1,10 @@
-# Rock Paper Cissors CLI
+# Rock Paper Cissors For Browser Console
 
-## A simple Javascript game working through the Inspector Console
+## A simple Javascript game working through the browser's Console
 
-## Live demo [HERE](TBD)
+<!-- # VERSION WITH [GUI](TBD) -->
+
+## Live demo [HERE](https://jarvis09-yann.github.io/rock-papers-cissors-CLI/)
 
 more info at [Odin Project Rock paper cissors project page](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors)
 

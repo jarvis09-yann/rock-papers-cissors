@@ -4,7 +4,7 @@
 
 <!-- # VERSION WITH [GUI](TBD) -->
 
-## Live demo [HERE](https://jarvis09-yann.github.io/rock-papers-cissors-CLI/)
+## Live demo [HERE](https://jarvis09-yann.github.io/rock-papers-cissors-console/)
 
 more info at [Odin Project Rock paper cissors project page](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors)
 

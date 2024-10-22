@@ -1,43 +1,172 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+
+:root {
+  --c-bg: #e6d5b8;
+  --c-darker: #4a2c2a;
+  --c-gold: #c3a641;
+  --c-text: #151515;
+  --c-button: #efefef;
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  padding: 0;
+}
+
+body {
+  font-family: "Merriweather", sans-serif;
+  background-color: var(--c-bg);
+  color: var(--c-text);
+
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+}
+
+.settings {
+  flex: 0 0 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 16px;
+  overflow-y: auto;
+}
+
+.settings-heading {
+  font-family: "Cinzel", "Merriweather", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0;
+  text-decoration: underline;
+}
+
+.games-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* width: 250px; */
+}
+
+.preset-games-container {
+  display: flex;
+  gap: 8px;
+}
+
+.preset-games-container button {
+  flex: 1;
+}
+
+.custom-games-container {
+  display: flex;
+  flex: 1;
+  gap: 8px;
+}
+
+.custom-games-container button {
+  flex: 0 0 100px;
+  padding: 0;
+}
+
+.custom-games-container input {
+  min-width: 0;
+  flex: 1 0 0px;
+}
+
+.play-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  max-width: calc(100vw - 300px);
+}
+
+.heading {
+  font-family: "Cinzel", "Merriweather", sans-serif;
+  font-weight: 700;
+  line-break: auto;
 }
 
 h1 {
-  font-size: 64px;
-  margin-bottom: 0;
-}
-
-h2 {
   font-size: 48px;
+  text-align: center;
+  margin: 0;
 }
 
-.button-container {
+.player,
+.computer {
   display: flex;
-  justify-content: space-evenly;
-  gap: 100px;
-}
-button {
-  width: 300px;
-  height: 50px;
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.title-container,
-.tutorial {
-  display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
-.bold {
-  font-weight: bolder;
+.combat-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
 }
 
-img {
-  width: 400px;
+.combat-container h3 {
+  font-size: 48px;
+  margin: 0;
+}
+
+.combat-container p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.rps-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.item {
+  user-select: none;
+  height: 150px;
+  width: 150px;
+  font-size: 72px;
+}
+
+button,
+input {
+  border: 1px solid var(--c-text);
+  border-radius: 5px;
+  transition-duration: 0.25s;
+  padding: 2px 4px;
+  background-color: var(--c-button);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--c-text);
+  margin: 8px 0;
+}
+
+hr.hr-bold {
+  border-top-width: 2px;
+  margin: 0;
+  margin-bottom: 4px;
+}
+button:hover {
+  background-color: var(--c-gold);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.item:hover {
+  transform: scale(1.025);
+}
+
+.item:active {
+  transform: scale(1.15);
 }

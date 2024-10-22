@@ -1,52 +1,154 @@
-const choices = ["Rock", "Paper", "Cissors"];
+const choices = ["rock", "paper", "scissors"];
+const choicesEmojis = ["🪨", "📜", "🗡️"];
+const playerEmoji = document.querySelector("#player-emoji");
+const computerEmoji = document.querySelector("#computer-emoji");
+const choicesContainer = document.querySelector(".rps-container");
+const mainHeading = document.querySelector("h1");
+
+const gameSettings = document.querySelectorAll(".game-btn");
+const gameSettingsInput = document.querySelector("#custom-games");
+const currentGameType = document.querySelectorAll(".current-game-type");
+const remainingRounds = document.querySelector("#rounds-remaining");
+
+let totalRounds = 0;
+let maxRounds = 1;
 
 function getComputerChoice() {
-  let randomNumber = Math.floor(Math.random() * 3);
-  // Take a random number between 0 and 1 and multiply it by 3 and then round it
-  return choices[randomNumber];
+  return choices[Math.floor(Math.random() * 3)];
 }
 
-function getPlayerChoice() {
-  let playerChoice = prompt("Rock, Paper or Cissors?");
-  playerChoice =
-    playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1).toLowerCase();
-  // Capitalize the first letter, ugly but it works well
-  if (!choices.includes(playerChoice)) {
-    alert("Please choose Rock, Paper or Cissors");
-    return getPlayerChoice();
-    // If playerChoice not in choices, try again
+function updateChoices(playerChoice, computerChoice) {
+  playerEmoji.textContent = choicesEmojis[choices.indexOf(playerChoice)];
+  computerEmoji.textContent = choicesEmojis[choices.indexOf(computerChoice)];
+}
+
+function startGame(rounds) {
+  maxRounds = rounds;
+  totalRounds = 0;
+  remainingRounds.textContent = maxRounds;
+  resetDisplay();
+}
+
+function play(playerChoice, computerChoice) {
+  if (totalRounds >= maxRounds) {
+    endGame();
+    return;
   }
-  return playerChoice;
-}
 
-function play() {
-  let playerChoice = getPlayerChoice();
-  let computerChoice = getComputerChoice();
+  totalRounds++;
+  remainingRounds.textContent = maxRounds - totalRounds;
+
   if (playerChoice === computerChoice) {
-    console.log("It's a tie!");
-  } // Ugly but i have no idea on how to do that more properly
-  if (playerChoice === "Rock" && computerChoice === "Cissors") {
-    console.log("You win! computer chose Cissors");
-  }
-  if (playerChoice === "Paper" && computerChoice === "Rock") {
-    console.log("You win! Computer chose Rock");
-  }
-  if (playerChoice === "Cissors" && computerChoice === "Paper") {
-    console.log("You win! Computer chose Paper");
-  }
-  if (playerChoice == "Rock" && computerChoice === "Paper") {
-    console.log("You lose! Computer chose Paper");
-  }
-  if (playerChoice === "Paper" && computerChoice === "Cissors") {
-    console.log("You lose! Computer chose Cissors");
-  }
-  if (playerChoice === "Cissors" && computerChoice === "Rock") {
-    console.log("You lose! Computer chose Rock");
+    draw();
+  } else if (
+    (playerChoice === "rock" && computerChoice === "scissors") ||
+    (playerChoice === "paper" && computerChoice === "rock") ||
+    (playerChoice === "scissors" && computerChoice === "paper")
+  ) {
+    win();
+  } else {
+    lose();
   }
 }
 
-function playGames() {
-  for (let i = 0; i < 5; i++) {
-    play();
+function win() {
+  mainHeading.textContent = "Thou hast triumphed";
+  incrementStat("#wins");
+}
+
+function lose() {
+  mainHeading.textContent = "Thou hast been slain";
+  incrementStat("#losses");
+}
+
+function draw() {
+  mainHeading.textContent = "Thou hast drawn";
+  incrementStat("#draws");
+}
+
+function incrementStat(selector) {
+  const element = document.querySelector(selector);
+  element.textContent = parseInt(element.textContent) + 1;
+}
+
+function handleGameSettings(settingID) {
+  switch (settingID) {
+    case "one-game":
+      startGame(1);
+      break;
+    case "five-games":
+      startGame(5);
+      break;
+    case "custom-games-btn":
+      if (gameSettingsInput.value) {
+        startGame(parseInt(gameSettingsInput.value));
+      }
+      break;
+    case "reset-game":
+      resetGame();
+      break;
+    case "reset-stats":
+      resetStats();
+      break;
   }
 }
+
+function resetDisplay() {
+  mainHeading.textContent = "Thou shall choose: Stone, Parchement, Dagger?";
+  playerEmoji.textContent = "❔";
+  computerEmoji.textContent = "❔";
+}
+
+function endGame() {
+  const wins = parseInt(document.querySelector("#wins").textContent);
+  const losses = parseInt(document.querySelector("#losses").textContent);
+
+  if (wins < losses) {
+    mainHeading.textContent = "Thou hast lost the war";
+  } else if (wins > losses) {
+    mainHeading.textContent = "Thou hast triumphed the war";
+  } else {
+    mainHeading.textContent = "Thou hast drawn the war";
+  }
+
+  resetGame();
+
+  // Show message for 3 seconds then reset display
+  setTimeout(resetDisplay, 3000);
+}
+
+function resetGame() {
+  resetDisplay();
+  document.querySelector("#wins").textContent = "0";
+  document.querySelector("#losses").textContent = "0";
+  document.querySelector("#draws").textContent = "0";
+  remainingRounds.textContent = "0";
+  totalRounds = 0;
+  maxRounds = 1;
+}
+
+function resetStats() {
+  resetGame();
+  document.querySelector("#wins-total").textContent = "0";
+  document.querySelector("#losses-total").textContent = "0";
+  document.querySelector("#draws-total").textContent = "0";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  resetDisplay();
+});
+
+choicesContainer.addEventListener("click", (e) => {
+  let target = e.target;
+  if (!choices.includes(target.id)) return;
+
+  let computerChoice = getComputerChoice();
+  updateChoices(target.id, computerChoice);
+  play(target.id, computerChoice);
+});
+
+gameSettings.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    handleGameSettings(e.target.id);
+  });
+});

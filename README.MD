@@ -16,8 +16,10 @@ TL;DR: press "one" and "begin anew" to play indefinitely, set any other number t
 
 This game also has statistics, you can track your amount of wins, defeats and ties and get your winning percentage. This data is lost when you reload the page or click the "Erase thy tally" button
 
-## Github pages deployment [HERE](https://jarvis09-yann.github.io/rock-papers-scissors-console/)
+## Github pages deployment [HERE](https://jarvis09-yann.github.io/rock-papers-scissors/)
 
 more info at [Odin Project Rock paper scissors project page](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors)
+
+**WARNING: Website is not mobile responsive (yet?)**
 
 **WARNING: I highly recommend not to look at the JavaScript code. It's absolutely awful (plus you'll uncover my crypto miner uh)**

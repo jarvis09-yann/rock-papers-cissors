@@ -19,81 +19,98 @@
         <a href="#">upgrade your browser</a> to improve your experience.
       </p>
     <![endif]-->
-    <div class="settings">
-      <h2 class="heading">Thine Adjustments</h2>
+    <div class="game-container">
+      <div class="settings">
+        <h2 class="heading">Thine Adjustments</h2>
 
-      <div class="settings-container">
-        <hr class="hr-bold" />
-        <p class="settings-heading">Sum of trials</p>
-        <div class="games-container">
-          <div class="preset-games-container">
-            <button class="game-btn" id="one-game">One (default)</button>
-            <button class="game-btn" id="five-games">Five</button>
+        <div class="settings-container">
+          <hr class="hr-bold" />
+          <p class="settings-heading">Sum of trials</p>
+          <div class="games-container">
+            <div class="preset-games-container">
+              <button class="game-btn" id="one-game">
+                One (infinite & default mode)
+              </button>
+              <button class="game-btn" id="five-games">Five</button>
+            </div>
+            <div class="custom-games-container">
+              <input
+                type="number"
+                id="custom-games"
+                name="custom-games"
+                placeholder="Thou shalt choose"
+              />
+              <button class="game-btn" id="custom-games-btn">
+                Offer thy choice
+              </button>
+            </div>
           </div>
-          <div class="custom-games-container">
-            <input
-              type="number"
-              id="custom-games"
-              name="custom-games"
-              placeholder="Thou shalt choose"
-            />
-            <button class="game-btn" id="custom-games-btn">
-              Offer thy choice
-            </button>
+          <hr />
+        </div>
+
+        <div class="settings-container">
+          <p class="settings-heading">
+            Active Trial (<span id="rounds-remaining">0</span>/<span
+              id="current-game-type"
+              >1</span
+            >
+            left)
+          </p>
+          <p>Triumphs: <span id="wins">0</span></p>
+          <p>Defeats: <span id="losses">0</span></p>
+          <p>Draws: <span id="draws">0</span></p>
+          <button class="game-btn" id="reset-game">
+            Begin anew (<span id="future-game-type">1</span>)
+          </button>
+          <span id="apply-notice">(click to apply)</span>
+          <hr />
+        </div>
+
+        <div class="settings-container">
+          <p class="settings-heading">Tally of Triumphs</p>
+          <p>Triumphs: <span id="wins-total">0</span></p>
+          <p>Defeats: <span id="losses-total">0</span></p>
+          <p>Draws: <span id="draws-total">0</span></p>
+          <p>Triumph rate: <span id="win-rate">0</span>%</p>
+          <button class="game-btn" id="reset-stats">Erase Thy Tally</button>
+          <hr />
+        </div>
+      </div>
+
+      <div class="play-area">
+        <h1 class="heading">Thou shall choose: Stone, Parchement, Dagger?</h1>
+        <div class="combat-container">
+          <div class="player">
+            <h3 id="player-emoji">❔</h3>
+            <p>Thou</p>
+          </div>
+          <div class="versus">⚔️</div>
+          <div class="computer">
+            <h3 id="computer-emoji">❔</h3>
+            <p>Thy foe</p>
           </div>
         </div>
-        <hr />
-      </div>
 
-      <div class="settings-container">
-        <p class="settings-heading">
-          Active Trial (<span id="rounds-remaining">0</span>/<span
-            class="current-game-type"
-            >0</span
-          >
-          left)
-        </p>
-        <p>Triumphs: <span id="wins">0</span></p>
-        <p>Defeats: <span id="losses">0</span></p>
-        <p>Draws: <span id="draws">0</span></p>
-        <button class="game-btn" id="reset-game">
-          Begin anew (<span class="current-game-type">1</span>)
-        </button>
-        <hr />
-      </div>
-
-      <div class="settings-container">
-        <p class="settings-heading">Tally of Triumphs</p>
-        <p>Triumphs: <span id="wins-total">0</span></p>
-        <p>Defeats: <span id="losses-total">0</span></p>
-        <p>Draws: <span id="draws-total">0</span></p>
-        <p>Triumph rate: <span id="win-rate">0</span>%</p>
-        <button class="game-btn" id="reset-stats">Erase Thy Tally</button>
-        <hr />
+        <div class="rps-container">
+          <button class="item" id="rock">🪨</button>
+          <button class="item" id="paper">📜</button>
+          <button class="item" id="scissors">🗡️</button>
+        </div>
+        <h2 class="heading" id="sub-heading">There may be but one</h2>
       </div>
     </div>
-
-    <div class="play-area">
-      <h1 class="heading">Thou shall choose: Stone, Parchement, Dagger?</h1>
-      <div class="combat-container">
-        <div class="player">
-          <h3 id="player-emoji">❔</h3>
-          <p>Thou</p>
-        </div>
-        <div class="versus">⚔️</div>
-        <div class="computer">
-          <h3 id="computer-emoji">❔</h3>
-          <p>Thy foe</p>
-        </div>
+    <footer>
+      <p>
+        Made by <a href="https://github.com/jarvis09-yann">jarvis09</a> for
+        <a href="https://www.theodinproject.com/">TOP</a> -
+        <a href="https://github.com/jarvis09-yann/rock-papers-scissors"
+          >Github repo</a
+        >
+      </p>
+      <div class="close-button-container">
+        <p id="close-button">&#10006;</p>
       </div>
-
-      <div class="rps-container">
-        <button class="item" id="rock">🪨</button>
-        <button class="item" id="paper">📜</button>
-        <button class="item" id="scissors">🗡️</button>
-      </div>
-      <h2 class="heading">There may be but one</h2>
-    </div>
+    </footer>
     <script src="app.js" async defer></script>
   </body>
 </html>
